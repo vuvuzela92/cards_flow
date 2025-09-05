@@ -1,6 +1,8 @@
 import sys
-# Добавляем путь к вашему файлу utils.py в sys.path
-sys.path.append(r'C:\Users\123\Desktop\cards_flow_git')
+import os
+# Добавляем в sys.path директорию проекта (где лежат my_card_utils.py и my_utils.py)
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Теперь можно импортировать
 from my_card_utils import extract_characteristic, get_nds_target_range, prepare_insert_nds_to_unit
 from my_utils import safe_open_spreadsheet
 
