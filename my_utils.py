@@ -1,12 +1,13 @@
 import json
 import gspread
 import time
+import os
 
-# Функция для загрузки API токенов из файла tokens.json
 def load_api_tokens():
-    with open(r'C:\Users\123\Desktop\cards_flow_git\tokens.json', encoding= 'utf-8') as f:
-        tokens = json.load(f)
-        return tokens
+    # Путь к файлу относительно корня проекта
+    tokens_path = os.path.join(os.path.dirname(__file__), 'tokens.json')
+    with open(tokens_path, 'r', encoding='utf-8') as f:
+        return json.load(f)
     
 def safe_open_spreadsheet(title, retries=5, delay=5):
     """
