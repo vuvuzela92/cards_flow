@@ -36,3 +36,4 @@ if __name__ == "__main__":
         headers_loc, col_art_header, nds_dict_data, sheet)
     # Записываем список списков в диапазон
     sheet.update(range_name=nds_range, values=nds_values)
+    print("Данные по НДС добавлены в таблицу")
