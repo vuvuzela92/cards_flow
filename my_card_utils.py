@@ -71,16 +71,22 @@ def extract_characteristic(characteristic: str):
     characteristic: название нужной характеристики.
     Функция возвращает значение список словарей с """
     # список для хранения данных об НДС
-    characteristic_data_list = []
+    # characteristic_data_list = []
+    characteristic_data_dict = {}
     cards_info = get_card_info()
     for i in range(len(cards_info)):
         # Извлекаем артикул товара
         nm_id = cards_info[i]['nmID']
-        # Получаем список характеристик
-        characteristics = cards_info[i]['characteristics']
-        # Ищем нужную характеристику по имени
-        characteristic_full = next((item for item in characteristics if item['name'] == characteristic), None)
-        # Обрабатываем случаи, когда нет информации об НДС
+        try:
+            # Получаем список характеристик
+            characteristics = cards_info[i]['characteristics']
+            # Ищем нужную характеристику по имени
+            characteristic_full = next((item for item in characteristics if item['name'] == characteristic), None)
+        except:
+            print(f'Нет данных по {characteristic} по {nm_id}')
+            # Ищем нужную характеристику по имени
+            characteristic_full = next((item for item in characteristics if item['name'] == characteristic), None)
+            # Обрабатываем случаи, когда нет информации об НДС
         try:
             if characteristic_full is None:
                 print(f"Не найдена характеристика {characteristic} для nm_id={nm_id}")
@@ -96,15 +102,18 @@ def extract_characteristic(characteristic: str):
                     char = int(value_list[0])
 
             # Создаём словарь
-            char_dict = {nm_id: char}
-            characteristic_data_list.append(char_dict)
+            # char_dict = {nm_id: char}
+            characteristic_data_dict[nm_id] = char
+            # characteristic_data_list.append(char_dict)
 
         except (TypeError, ValueError, KeyError) as e:
             print(f"Ошибка при обработке nm_id={nm_id}: {e}")
             # Если будет исключение, то запишем 0
-            char_dict = {nm_id: 0}  # fallback
-            characteristic_data_list.append(char_dict)
-    return characteristic_data_list
+            # char_dict = {nm_id: 0}  # fallback
+            characteristic_data_dict.get(nm_id, 0)
+            # characteristic_data_list.append(char_dict)
+    # return characteristic_data_list
+    return characteristic_data_dict
 
 def get_nds_target_range(headers_loc: int, col_header: str, col_art_header: str, sheet: gspread.worksheet):
     """Функция определяет диапазон для вставки данных в гугл таблицу.
