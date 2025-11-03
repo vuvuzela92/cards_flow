@@ -4,6 +4,9 @@ from psycopg2 import OperationalError
 import pandas as pd
 from sqlalchemy import create_engine
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Подключение к базе данных
 def create_connection(db_name, db_user, db_password, db_host, db_port):
@@ -58,4 +61,5 @@ def get_db_table(db_query: str, connection):
         print('Данные из БД загружены в датафрейм')
         return df_db
     except Exception as e:
+
         print(f'Ошибка получения данных из БД {e}')
