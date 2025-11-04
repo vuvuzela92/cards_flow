@@ -207,12 +207,12 @@ async def fetch_all(date_start: int, date_end: None):
 
 async def process_funnel_month():
     """
-    Оптимизированная версия: собираем ВСЕ данные в один DataFrame за 3 месяца
+    Оптимизированная версия: собираем ВСЕ данные в один DataFrame за несколько месяцев
     """
     # === 1. ПОЛУЧАЕМ ДАТЫ ДЛЯ 12 МЕСЯЦЕВ до текущего ===
     current_month = datetime.now().month
     date_ranges = []
-    for month_num in range(0, 13):
+    for month_num in range(0, 2):
         year = datetime.now().year
         month = current_month - month_num
         if month <= 0:
