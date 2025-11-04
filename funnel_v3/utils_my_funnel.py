@@ -16,6 +16,8 @@ from gspread_dataframe import set_with_dataframe
 from datetime import datetime
 import os
 
+load_dotenv()
+
 
 # === НАСТРОЙКА ЛОГИРОВАНИЯ ===
 logger = logging.getLogger("funnel_logger")
@@ -113,7 +115,7 @@ def safe_open_spreadsheet(title, retries=5, delay=5):
             else:
                 raise RuntimeError(f"Не удалось открыть таблицу '{title}' после {retries} попыток.")
 
-async def get_funnel_v3(date_start: None, date_end: None, account: str, api_token: str):
+async def get_funnel_v3(date_start: None, date_end: None, account: str, api_token: str, semaphore: asyncio.Semaphore):
     """Получение статистики по воронке продаж Wildberries"""
     products_list = []
     headers = {"Authorization": api_token}
@@ -126,93 +128,96 @@ async def get_funnel_v3(date_start: None, date_end: None, account: str, api_toke
     offset = 0
     max_attempts = 10
     attempt = 0
+    semaphore = asyncio.Semaphore(10)
+    
+    async with semaphore:
+        async with aiohttp.ClientSession(headers=headers) as session:
+            while True:
+                payload = {
+                    "selectedPeriod": {
+                        "start": start.strftime("%Y-%m-%d"),
+                        "end": end.strftime("%Y-%m-%d")
+                    },
+                    "limit": limit,
+                    "offset": offset
+                }
 
-    async with aiohttp.ClientSession(headers=headers) as session:
-        while True:
-            payload = {
-                "selectedPeriod": {
-                    "start": start.strftime("%Y-%m-%d"),
-                    "end": end.strftime("%Y-%m-%d")
-                },
-                "limit": limit,
-                "offset": offset
-            }
+                try:
+                    async with session.post(url, json=payload) as res:
+                        if res.status == 200:
+                            data = await res.json()
+                            products = data.get("data", {}).get("products", [])
 
-            try:
-                async with session.post(url, json=payload) as res:
-                    if res.status == 200:
-                        data = await res.json()
-                        products = data.get("data", {}).get("products", [])
+                            if not products:
+                                logging.info(f"📭 Нет данных для {account}")
+                                break
 
-                        if not products:
-                            logging.info(f"📭 Нет данных для {account}")
-                            break
+                            for p in products:
+                                p["account"] = account
+                            products_list.extend(products)
 
-                        for p in products:
-                            p["account"] = account
-                        products_list.extend(products)
+                            logging.info(f"✅ Получено {len(products_list)} товаров ({len(products)} новых) для {account} за период {payload['selectedPeriod']}")
 
-                        logging.info(f"✅ Получено {len(products_list)} товаров ({len(products)} новых) для {account} за период {payload['selectedPeriod']}")
+                            if len(products) < limit:
+                                break
 
-                        if len(products) < limit:
-                            break
+                            offset += len(products)
+                            attempt = 0
+                            await asyncio.sleep(normal_delay)
 
-                        offset += len(products)
-                        attempt = 0
-                        await asyncio.sleep(normal_delay)
+                        elif res.status == 429:
+                            logging.info(f"⚠️ Ошибка 429 для {account}: слишком много запросов, ждем {retry_delay} сек.")
+                            await asyncio.sleep(retry_delay)
+                            attempt += 1
+                            if attempt >= max_attempts:
+                                logging.info(f"🚫 Превышено число попыток ({max_attempts}) для {account}")
+                                break
+                            continue
 
-                    elif res.status == 429:
-                        logging.info(f"⚠️ Ошибка 429 для {account}: слишком много запросов, ждем {retry_delay} сек.")
-                        await asyncio.sleep(retry_delay)
-                        attempt += 1
-                        if attempt >= max_attempts:
-                            logging.info(f"🚫 Превышено число попыток ({max_attempts}) для {account}")
-                            break
-                        continue
+                        elif res.status in (400, 401, 403):
+                            err = await res.json()
+                            logging.info(f"⚠️ Ошибка {res.status} для {account}: {err.get('detail', 'Ошибка доступа')}")
+                            return None
 
-                    elif res.status in (400, 401, 403):
-                        err = await res.json()
-                        logging.info(f"⚠️ Ошибка {res.status} для {account}: {err.get('detail', 'Ошибка доступа')}")
-                        return None
+                        else:
+                            logging.info(f"⚠️ Неожиданный статус {res.status} для {account}")
+                            attempt += 1
+                            if attempt >= max_attempts:
+                                break
 
-                    else:
-                        logging.info(f"⚠️ Неожиданный статус {res.status} для {account}")
-                        attempt += 1
-                        if attempt >= max_attempts:
-                            break
+                except aiohttp.ClientError as err:
+                    logging.info(f"🌐 Сетевая ошибка: {err}")
+                    attempt += 1
+                    if attempt >= max_attempts:
+                        break
 
-            except aiohttp.ClientError as err:
-                logging.info(f"🌐 Сетевая ошибка: {err}")
-                attempt += 1
-                if attempt >= max_attempts:
+                except Exception as e:
+                    logging.info(f"💥 Неожиданная ошибка: {e}")
                     break
 
-            except Exception as e:
-                logging.info(f"💥 Неожиданная ошибка: {e}")
-                break
-
-    if products_list:
-        logging.info(f"🟢 Завершено получение данных по {account}. Всего товаров: {len(products_list)}")
-        return products_list
-    else:
-        logging.info(f"❌ Не удалось получить данные по воронке продаж для {account}")
-        return None
+        if products_list:
+            logging.info(f"🟢 Завершено получение данных по {account}. Всего товаров: {len(products_list)}")
+            return products_list
+        else:
+            logging.info(f"❌ Не удалось получить данные по воронке продаж для {account}")
+            return None
 
 async def fetch_all(date_start: int, date_end: None):
+    semaphore = asyncio.Semaphore(10)
     # Создаем задачник для получения данных о поставках по всем аккаунтам асинхронно
-    tasks = [get_funnel_v3(date_start, date_end, account, api_token) for account, api_token in load_api_tokens().items()]
+    tasks = [get_funnel_v3(date_start, date_end, account, api_token, semaphore) for account, api_token in load_api_tokens().items()]
     res = await asyncio.gather(*tasks)
     return res
 
 
 async def process_funnel_month():
     """
-    Оптимизированная версия: собираем ВСЕ данные в один DataFrame за несколько месяцев
+    Оптимизированная версия: собираем ВСЕ данные в один DataFrame за 3 месяца
     """
     # === 1. ПОЛУЧАЕМ ДАТЫ ДЛЯ 12 МЕСЯЦЕВ до текущего ===
     current_month = datetime.now().month
     date_ranges = []
-    for month_num in range(0, 2):
+    for month_num in range(0, 13):
         year = datetime.now().year
         month = current_month - month_num
         if month <= 0:
@@ -494,3 +499,157 @@ def funnel_month_to_gs():
     max_columns = sheet_profit.col_count
     sheet_profit.update_cell(1, max_columns, formatted_time)
     print("Данные загружены")
+
+# === Для ежедневной воронки
+def batchify(data, batch_size):
+    """
+    Splits data into batches of a specified size.
+
+    Parameters:
+    - data: The list of items to be batched.
+    - batch_size: The size of each batch.
+
+    Returns:
+    - A generator yielding batches of data.
+    """
+    for i in range(0, len(data), batch_size):
+        yield data[i:i + batch_size]
+
+async def process_funnel_daily():
+    """
+    Оптимизированная версия: собираем ВСЕ данные в один DataFrame за 3 месяца
+    """
+    # === 1. ПОЛУЧАЕМ ДАТЫ ДЛЯ 12 МЕСЯЦЕВ до текущего ===
+    bath_size = 28
+    date_ranges = []
+    for day_num in range(1, 29):
+        found_day = datetime.now()-timedelta(days=day_num)
+        first_date, last_date = found_day, found_day
+        date_ranges.append((first_date, last_date))
+    
+    print(f"📅 Запрашиваем данные за {len(date_ranges)} дней...")
+
+    batches = batchify(date_ranges, bath_size)
+
+    # === 2. ПАРАЛЛЕЛЬНЫЙ ЗАПРОС ВСЕХ МЕСЯЦЕВ ===
+    list_dfs = []
+    for batch in batches:
+        tasks = [fetch_all(first, last) for first, last in batch]
+        results = await asyncio.gather(*tasks)
+        
+        print(f"✅ Получено {sum(len(r) for r in results)} записей")
+        
+        # === 3. ОБЪЕДИНЯЕМ ВСЕ ДАННЫЕ В ОДИН СПИСОК ===
+        all_products = []
+        for result in results:
+            for acc_data in result:
+                if acc_data:
+                    all_products.extend(acc_data)
+        
+        print(f"📦 Обработано {len(all_products)} товаров")
+        
+        # === 4. ОБРАБОТКА ВСЕХ ДАННЫХ ===
+        rows = []
+        for product in all_products:
+            # Извлекаем данные 
+            prod_info = product.get("product", {})
+            stat = product.get("statistic", {})
+            selected = stat.get("selected", {})
+            time_to_ready = selected.get("timeToReady", {})
+            
+            # Базовая информация
+            row = {
+                "account": product.get("account"),
+                "nm_id": prod_info.get("nmId"),
+                "vendor_code": prod_info.get("vendorCode"),  
+                "title": prod_info.get("title"),
+                "subject_id": prod_info.get("subjectId"),
+                "subject_name": prod_info.get("subjectName"),
+                "brand_name": prod_info.get("brandName"),
+                "product_rating": prod_info.get("productRating"),
+                "feedback_rating": prod_info.get("feedbackRating"),
+                "stocks_wb": prod_info.get("stocks", {}).get("wb"),
+                "stocks_mp": prod_info.get("stocks", {}).get("mp"),
+                "balance_sum": prod_info.get("stocks", {}).get("balanceSum"),
+            }
+            
+            # Метрики selected
+            row.update({
+                "open_count": selected.get("openCount"),
+                "cart_count": selected.get("cartCount"),
+                "order_count": selected.get("orderCount"),
+                "orders_sum": selected.get("orderSum"),
+                "buyout_count": selected.get("buyoutCount"),
+                "buyout_sum": selected.get("buyoutSum"),
+                "cancel_count": selected.get("cancelCount"),
+                "cancel_sum": selected.get("cancelSum"),
+                "avg_price": selected.get("avgPrice"),
+                "avg_orders_count_per_day": selected.get("avgOrdersCountPerDay"),
+                "share_order_percent": selected.get("shareOrderPercent"),
+                "add_to_wish_list": selected.get("addToWishlist"),
+                "time_to_ready": (
+                    time_to_ready.get("days", 0) * 24 * 60 +
+                    time_to_ready.get("hours", 0) * 60 +
+                    time_to_ready.get("mins", 0)
+                ),
+                "localization_percent": selected.get("localizationPercent"),
+                "date": selected.get("period", {}).get("end"),
+            })
+            
+            rows.append(row)
+                
+        # === 5. ОДИН DataFrame ===
+        df_full = pd.DataFrame(rows)
+        list_dfs.append(df_full)
+    df_final = pd.concat(list_dfs)
+    # === 6. Создаем новые колонки ===
+    df_final['month'] = pd.to_datetime(df_final['date']).dt.strftime('%m-%Y')
+    df_final['wild'] = df_final['vendor_code'].str.extract(r'(wild\d+)')
+    
+    print(f"⚡ DataFrame создан: {len(df_final)} строк за {len(date_ranges)} дней")   
+    return df_final    
+
+
+async def main_funnel_daily():
+    df = await process_funnel_daily()
+    df = df.drop_duplicates()
+    # Приводим колонку к типу данных дата
+    df['date'] = pd.to_datetime(df['date']).dt.date
+    # === Добавляем данные в БД ===
+    table_name = 'funnel_daily'
+    columns_type = {
+        'account': 'VARCHAR(255)',
+        'nm_id': 'BIGINT',
+        'vendor_code': 'VARCHAR(255)',
+        'title': 'VARCHAR(255)',
+        'subject_id': 'BIGINT',
+        'subject_name': 'VARCHAR(255)',
+        'brand_name': 'VARCHAR(255)',
+        'product_rating': 'NUMERIC(5,2)',
+        'feedback_rating': 'NUMERIC(5,2)',
+        'stocks_wb': 'BIGINT',
+        'stocks_mp': 'BIGINT',
+        'balance_sum': 'BIGINT',
+        'open_count': 'BIGINT',
+        'cart_count': 'BIGINT',
+        'order_count': 'BIGINT',
+        'orders_sum': 'BIGINT',
+        'buyout_count': 'BIGINT',
+        'buyout_sum': 'BIGINT',
+        'cancel_count': 'BIGINT',
+        'cancel_sum': 'BIGINT',
+        'avg_price': 'NUMERIC(12,2)',
+        'avg_orders_count_per_day': 'NUMERIC(10,2)',
+        'share_order_percent': 'NUMERIC(10,2)',
+        'add_to_wish_list': 'BIGINT',
+        'time_to_ready': 'BIGINT',
+        'localization_percent': 'NUMERIC(10,2)',
+        'date': 'DATE',
+        'month': 'TEXT',
+        'wild': 'TEXT'
+    }
+
+    # Ключевые колонки для UPSERT
+    key_columns = ('nm_id', 'date', 'account')  # как первичный ключ
+    create_insert_table_db_sync(df, table_name, columns_type, key_columns)
+    print(f"Данные добавлены в БД {table_name}")
