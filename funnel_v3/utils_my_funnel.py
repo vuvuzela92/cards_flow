@@ -470,22 +470,30 @@ def funnel_month_to_gs():
     password = os.getenv('PASSWORD_2')
     host = os.getenv('HOST_2')
     port = os.getenv('PORT_2')
-    table_name = "funnel_month"
+    table_name = "funnel_daily"
     # Получаем нужные данные
     connection = create_connection(name, user, password, host, port)
-    query_1 = f"""SELECT * FROM {table_name}
-                WHERE "date" >= DATE_TRUNC('year', CURRENT_DATE)
-                AND "date" <= CURRENT_DATE - INTERVAL '1 day';"""
+    query_1 = f"""SELECT nm_id,
+                    to_char(date, 'MM-YYYY') AS month, 
+                    SUM(open_count) AS open_count,
+                    SUM(cart_count) AS cart_count, 
+                    SUM(order_count) AS order_count,
+                    SUM(orders_sum) AS orders_sum,
+                    SUM(buyout_count) AS buyout_count,
+                    SUM(buyout_sum) AS buyout_sum,
+                    SUM(cancel_count) AS cancel_count,
+                    SUM(cancel_sum) AS cancel_sum,
+                    ROUND(AVG(avg_price),2) AS avg_price,
+                    wild,
+                    account
+            FROM {table_name}
+            GROUP BY nm_id,
+                    to_char(date, 'MM-YYYY'),
+                    wild,
+                    account
+            ORDER BY "month", orders_sum DESC;"""
     # Помещаем данные в датафрейм
-    df = get_db_table(query_1, connection)
-    # Определяем порядок расположения колонок
-    df_month_cols_order = ["nm_id", "brand_name", "title", "date", "open_count", "cart_count", "order_count", "orders_sum", "buyout_count", "buyout_sum",
-                    "cancel_count", "cancel_sum", "avg_price", "avg_orders_count_per_day", "add_to_wish_list", "localization_percent", "time_to_ready", 
-                    "stocks_mp", "stocks_wb", "wild", "account", "month"]
-    df_month = df[df_month_cols_order]
-    # df_month['month'] = df_month['month'].astype(str)
-    # df_month['date'] = df_month['date'].astype(str)
-    # df_month = df_month.astype(str)
+    df_month = get_db_table(query_1, connection)
     table = safe_open_spreadsheet("План РК")
     sheet_profit = table.worksheet("БД Воронка месяц")
 
@@ -499,6 +507,38 @@ def funnel_month_to_gs():
     max_columns = sheet_profit.col_count
     sheet_profit.update_cell(1, max_columns, formatted_time)
     print("Данные загружены")
+
+    # === Выгружаем данные по рейтингу из funnel_daily
+    query_2 = f"""SELECT 
+                    wild AS article,
+                    subject_name,
+                    COUNT(*) FILTER (WHERE ROUND(feedback_rating) = 5) AS rating_5,
+                    COUNT(*) FILTER (WHERE ROUND(feedback_rating) = 4) AS rating_4, 
+                    COUNT(*) FILTER (WHERE ROUND(feedback_rating) = 3) AS rating_3,
+                    COUNT(*) FILTER (WHERE ROUND(feedback_rating) = 2) AS rating_2,
+                    COUNT(*) FILTER (WHERE ROUND(feedback_rating) = 1) AS rating_1,
+                    COUNT(*) AS total_reviews,
+                    ROUND(AVG(feedback_rating), 2) AS avg_rating
+                FROM {table_name}
+                WHERE"date" BETWEEN CURRENT_DATE - INTERVAL '28 day' AND CURRENT_DATE
+                    AND feedback_rating IS NOT NULL
+                GROUP BY wild, subject_name
+                ORDER BY total_reviews DESC;"""
+    
+    # Помещаем данные в датафрейм
+    df_rating = get_db_table(query_2, connection)
+    table_rating = safe_open_spreadsheet("Расчет закупки NEW")
+    sheet_rating = table_rating.worksheet("Рейтинг_товаров")
+
+    # Полная замена листа
+    sheet_rating.clear()
+    # Метод set_with_dataframe библиотеки gspread_dataframe
+    set_with_dataframe(sheet_rating, df_rating, resize=True)
+
+    formatted_time = (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
+    max_columns = sheet_rating.col_count
+    sheet_rating.update_cell(1, max_columns, formatted_time)
+    print("Данные загружены")    
 
 # === Для ежедневной воронки
 def batchify(data, batch_size):
