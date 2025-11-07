@@ -480,25 +480,23 @@ def funnel_month_to_gs():
     table_name = "funnel_daily"
     # Получаем нужные данные
     connection = create_connection(name, user, password, host, port)
-    query_1 = f"""SELECT nm_id,
-                    to_char(date, 'MM-YYYY') AS month, 
-                    SUM(open_count) AS open_count,
-                    SUM(cart_count) AS cart_count, 
-                    SUM(order_count) AS order_count,
-                    SUM(orders_sum) AS orders_sum,
-                    SUM(buyout_count) AS buyout_count,
-                    SUM(buyout_sum) AS buyout_sum,
-                    SUM(cancel_count) AS cancel_count,
-                    SUM(cancel_sum) AS cancel_sum,
-                    ROUND(AVG(avg_price),2) AS avg_price,
-                    wild,
-                    account
-            FROM {table_name}
-            GROUP BY nm_id,
-                    to_char(date, 'MM-YYYY'),
-                    wild,
-                    account
-            ORDER BY "month", orders_sum DESC;"""
+    query_1 = f"""SELECT to_char(date, 'MM-YYYY') AS month, 
+                wild,
+                account,
+                SUM(open_count) AS open_count,
+                SUM(cart_count) AS cart_count, 
+                SUM(order_count) AS order_count,
+                SUM(orders_sum) AS orders_sum,
+                SUM(buyout_count) AS buyout_count,
+                SUM(buyout_sum) AS buyout_sum,
+                SUM(cancel_count) AS cancel_count,
+                SUM(cancel_sum) AS cancel_sum,
+                ROUND(AVG(avg_price),2) AS avg_price
+        FROM {table_name}
+        WHERE fd.wild = 'wild105'
+        GROUP BY to_char(date, 'MM-YYYY'),
+                wild, account
+        ORDER BY "month", orders_sum DESC, account;"""
     # Помещаем данные в датафрейм
     df_month = get_db_table(query_1, connection)
     table = safe_open_spreadsheet("План РК")
