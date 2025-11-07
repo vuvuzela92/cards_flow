@@ -24,7 +24,10 @@ logger = logging.getLogger("funnel_logger")
 logger.setLevel(logging.INFO)
 
 # Форматтер
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(funcName)s - %(message)s')
+formatter = logging.Formatter(
+    '%(asctime)s - %(levelname)s - %(funcName)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 
 # 1. Хендлер в ФАЙЛ
 file_handler = logging.FileHandler('funnel.log', encoding='utf-8')
@@ -36,9 +39,10 @@ console_handler = logging.StreamHandler()
 console_handler.setFormatter(formatter)
 console_handler.setLevel(logging.INFO)
 
-# Добавляем оба хендлера
-logger.addHandler(file_handler)
-logger.addHandler(console_handler)
+# Добавляем оба хендлера, если их еще нет
+if not logger.handlers:
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
 
 
 def load_api_tokens():
@@ -115,7 +119,7 @@ def safe_open_spreadsheet(title, retries=5, delay=5):
             else:
                 raise RuntimeError(f"Не удалось открыть таблицу '{title}' после {retries} попыток.")
 
-async def get_funnel_v3(date_start: None, date_end: None, account: str, api_token: str, semaphore: asyncio.Semaphore):
+async def get_funnel_v3(date_start: None, date_end: None, account: str, api_token: str):
     """Получение статистики по воронке продаж Wildberries"""
     products_list = []
     headers = {"Authorization": api_token}
@@ -126,7 +130,7 @@ async def get_funnel_v3(date_start: None, date_end: None, account: str, api_toke
     end = date_end
     limit = 1000
     offset = 0
-    max_attempts = 10
+    max_attempts = 30
     attempt = 0
     semaphore = asyncio.Semaphore(10)
     
@@ -168,6 +172,7 @@ async def get_funnel_v3(date_start: None, date_end: None, account: str, api_toke
                         elif res.status == 429:
                             logging.info(f"⚠️ Ошибка 429 для {account}: слишком много запросов, ждем {retry_delay} сек.")
                             await asyncio.sleep(retry_delay)
+                            retry_delay += 0.1
                             attempt += 1
                             if attempt >= max_attempts:
                                 logging.info(f"🚫 Превышено число попыток ({max_attempts}) для {account}")
@@ -203,9 +208,8 @@ async def get_funnel_v3(date_start: None, date_end: None, account: str, api_toke
             return None
 
 async def fetch_all(date_start: int, date_end: None):
-    semaphore = asyncio.Semaphore(10)
     # Создаем задачник для получения данных о поставках по всем аккаунтам асинхронно
-    tasks = [get_funnel_v3(date_start, date_end, account, api_token, semaphore) for account, api_token in load_api_tokens().items()]
+    tasks = [get_funnel_v3(date_start, date_end, account, api_token) for account, api_token in load_api_tokens().items()]
     res = await asyncio.gather(*tasks)
     return res
 
@@ -232,7 +236,10 @@ async def process_funnel_month():
     
     # === 2. ПАРАЛЛЕЛЬНЫЙ ЗАПРОС ВСЕХ МЕСЯЦЕВ ===
     tasks = [fetch_all(first, last) for first, last in date_ranges]
-    results = await asyncio.gather(*tasks)
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    for r in results:
+        if isinstance(r, Exception):
+            logger.error(f"Ошибка при получении данных: {r}")
     
     logging.info(f"✅ Получено {sum(len(r) for r in results)} записей")
     
@@ -508,38 +515,6 @@ def funnel_month_to_gs():
     sheet_profit.update_cell(1, max_columns, formatted_time)
     print("Данные загружены")
 
-    # === Выгружаем данные по рейтингу из funnel_daily
-    query_2 = f"""SELECT 
-                    wild AS article,
-                    subject_name,
-                    COUNT(*) FILTER (WHERE ROUND(feedback_rating) = 5) AS rating_5,
-                    COUNT(*) FILTER (WHERE ROUND(feedback_rating) = 4) AS rating_4, 
-                    COUNT(*) FILTER (WHERE ROUND(feedback_rating) = 3) AS rating_3,
-                    COUNT(*) FILTER (WHERE ROUND(feedback_rating) = 2) AS rating_2,
-                    COUNT(*) FILTER (WHERE ROUND(feedback_rating) = 1) AS rating_1,
-                    COUNT(*) AS total_reviews,
-                    ROUND(AVG(feedback_rating), 2) AS avg_rating
-                FROM {table_name}
-                WHERE"date" BETWEEN CURRENT_DATE - INTERVAL '28 day' AND CURRENT_DATE
-                    AND feedback_rating IS NOT NULL
-                GROUP BY wild, subject_name
-                ORDER BY total_reviews DESC;"""
-    
-    # Помещаем данные в датафрейм
-    df_rating = get_db_table(query_2, connection)
-    table_rating = safe_open_spreadsheet("Расчет закупки NEW")
-    sheet_rating = table_rating.worksheet("Рейтинг_товаров")
-
-    # Полная замена листа
-    sheet_rating.clear()
-    # Метод set_with_dataframe библиотеки gspread_dataframe
-    set_with_dataframe(sheet_rating, df_rating, resize=True)
-
-    formatted_time = (datetime.now()).strftime("%Y-%m-%d %H:%M:%S")
-    max_columns = sheet_rating.col_count
-    sheet_rating.update_cell(1, max_columns, formatted_time)
-    print("Данные загружены")    
-
 # === Для ежедневной воронки
 def batchify(data, batch_size):
     """
@@ -562,7 +537,7 @@ async def process_funnel_daily():
     # === 1. ПОЛУЧАЕМ ДАТЫ ДЛЯ 12 МЕСЯЦЕВ до текущего ===
     bath_size = 28
     date_ranges = []
-    for day_num in range(1, 29):
+    for day_num in range(1, 366):
         found_day = datetime.now()-timedelta(days=day_num)
         first_date, last_date = found_day, found_day
         date_ranges.append((first_date, last_date))
