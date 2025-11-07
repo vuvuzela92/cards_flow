@@ -493,7 +493,6 @@ def funnel_month_to_gs():
                 SUM(cancel_sum) AS cancel_sum,
                 ROUND(AVG(avg_price),2) AS avg_price
         FROM {table_name}
-        WHERE fd.wild = 'wild105'
         GROUP BY to_char(date, 'MM-YYYY'),
                 wild, account
         ORDER BY "month", orders_sum DESC, account;"""
