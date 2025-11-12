@@ -534,7 +534,7 @@ async def process_funnel_daily():
     # === 1. ПОЛУЧАЕМ ДАТЫ ДЛЯ 12 МЕСЯЦЕВ до текущего ===
     bath_size = 28
     date_ranges = []
-    for day_num in range(1, 366):
+    for day_num in range(1, 28):
         found_day = datetime.now()-timedelta(days=day_num)
         first_date, last_date = found_day, found_day
         date_ranges.append((first_date, last_date))
