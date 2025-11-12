@@ -29,9 +29,9 @@ if __name__ == "__main__":
     logging.info("Материализованное представление fin_reports_mv 🔁")
 
     query_fin_deductions = """REFRESH MATERIALIZED VIEW CONCURRENTLY public.fin_deductions_mv;"""
-    execute_query(connection, query_fin_rep)
+    execute_query(connection, query_fin_deductions)
     logging.info("Материализованное представление fin_deductions_mv 🔁")
 
     query_fin_weekly_fin_rep = """REFRESH MATERIALIZED VIEW CONCURRENTLY public.weekly_fin_reports_mv;"""
-    execute_query(connection, query_fin_rep)
+    execute_query(connection, query_fin_weekly_fin_rep)
     logging.info("Материализованное представление weekly_fin_reports_mv 🔁")
