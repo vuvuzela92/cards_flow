@@ -15,7 +15,7 @@ logging.basicConfig(
 )
 
 if __name__ == "__main__":
-    asyncio.run(fetch_all_data(load_api_tokens(), num_weeks=1))
+    asyncio.run(fetch_all_data(load_api_tokens(), num_weeks=2))
     logging.info("✅ Загрузка данных завершена")
     # Устанавливаем соединение с БД
     connection = create_connection_to_vector_db()
@@ -23,10 +23,6 @@ if __name__ == "__main__":
     query_penalties = """REFRESH MATERIALIZED VIEW CONCURRENTLY public.penalties_mv;"""
     execute_query(connection, query_penalties)
     logging.info("Материализованное представление penalties_mv 🔁")
-
-    query_fin_rep = """REFRESH MATERIALIZED VIEW CONCURRENTLY public.fin_reports_mv;"""
-    execute_query(connection, query_fin_rep)
-    logging.info("Материализованное представление fin_reports_mv 🔁")
 
     query_fin_deductions = """REFRESH MATERIALIZED VIEW CONCURRENTLY public.fin_deductions_mv;"""
     execute_query(connection, query_fin_deductions)
