@@ -430,7 +430,7 @@ async def fetch_all_data(accounts_tokens, num_weeks=1):
             "installment_cofinancing_amount": "NUMERIC(12,2)",
             "wibes_wb_discount_percent": "SMALLINT",
             "cashback_amount": "NUMERIC(12,2)",
-            "cashback_discount": "NUMERIC(5,2)",
+            "cashback_discount": "NUMERIC(12,2)",
             "account": "VARCHAR(50)",
             }
         key_columns = ['realizationreport_id', 'rrd_id', 'srid']
