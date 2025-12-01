@@ -13,9 +13,12 @@ if __name__ == "__main__":
     # Извлекаем нужные данные
     characteristic_data = extract_characteristic(characteristic)
     # Превращаем список словарей в один словарь: {nm_id: характеристика}
-    nds_dict_data = {
-        nm_id: nds for d in characteristic_data for nm_id, nds in d.items()}
-
+    # nds_dict_data = {
+    #     nm_id: nds 
+    #     for d in characteristic_data 
+    #     if isinstance(d, dict)  # ПРОВЕРЯЕМ что это словарь
+    #     for nm_id, nds in d.items()
+    # }
     # Открываем гугл таблицу
     table = safe_open_spreadsheet('UNIT 2.0 (tested)')
     # Определяем лист для вставки данных
@@ -31,9 +34,9 @@ if __name__ == "__main__":
     nds_range = get_nds_target_range(
         headers_loc, col_header, col_art_header, sheet)
 
-    # Получаем значения НДС для вставки данных
+    # Получаем значения НДС для вставки данныхs
     nds_values = prepare_insert_nds_to_unit(
-        headers_loc, col_art_header, nds_dict_data, sheet)
+        headers_loc, col_art_header, characteristic_data, sheet)
     # Записываем список списков в диапазон
     sheet.update(range_name=nds_range, values=nds_values)
     print("Данные по НДС добавлены в таблицу")
