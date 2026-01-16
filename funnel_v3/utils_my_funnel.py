@@ -623,10 +623,30 @@ async def process_funnel_daily():
 
 
 async def main_funnel_daily():
+    # Запрашиваем данные по воронке за дни
     df = await process_funnel_daily()
+    # Удаляем общие дубликаты
     df = df.drop_duplicates()
     # Приводим колонку к типу данных дата
     df['date'] = pd.to_datetime(df['date']).dt.date
+
+    # Удаляем дубликаты, оставляя запись с наибольшим open_count
+    # Находим дубликаты по nm_id и date
+    df_orders_sum = df.sort_values(
+        by=['nm_id', 'date', 'orders_sum'],
+        ascending=[True, True, False]
+    )
+    # Удаляем дубликаты, оставляя первую запись (с наибольшим open_count)
+    df_orders_sum = df_orders_sum.drop_duplicates(subset=['nm_id', 'date'], keep='first')
+
+    # Теперь из полученного датафрейма удаляем дубликаты по nm_id и date, оставляя запись с наибольшим open_count
+    df_open_count = df_orders_sum.sort_values(
+        by=['nm_id', 'date', 'open_count'],
+        ascending=[True, True, False]
+    )
+    # Удаляем дубликаты, оставляя первую запись (с наибольшим open_count)
+    df_open_count = df_open_count.drop_duplicates(subset=['nm_id', 'date'], keep='first')
+
     # === Добавляем данные в БД ===
     table_name = 'funnel_daily'
     columns_type = {
@@ -662,6 +682,6 @@ async def main_funnel_daily():
     }
 
     # Ключевые колонки для UPSERT
-    key_columns = ('nm_id', 'date', 'account')  # как первичный ключ
-    create_insert_table_db_sync(df, table_name, columns_type, key_columns)
+    key_columns = ('nm_id', 'date')  # как первичный ключ
+    create_insert_table_db_sync(df_open_count, table_name, columns_type, key_columns)
     print(f"Данные добавлены в БД {table_name}")
