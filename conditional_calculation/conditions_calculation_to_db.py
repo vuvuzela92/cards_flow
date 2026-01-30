@@ -8,9 +8,9 @@ data = []
 # Создание подключения к базе данных
 connection = create_connection()
 # Цикл по количеству дней для расчета
-days_count = 26  # Количество дней для расчета
+days_count = 27  # Количество дней для расчета
 for day in range(days_count+1):
-    date = (datetime.now() - pd.Timedelta(days=day+1)).strftime('%Y-%m-%d')
+    date = (datetime.now() - pd.Timedelta(days=day)).strftime('%Y-%m-%d')
     print(f"Выполняется расчет за дату: {date}")
     query = f"""WITH revenue AS(
 	--- Расчет по выручки и количества ---
@@ -34,23 +34,26 @@ WHERE s."date" = '{date}'
 AND s.is_realization IS TRUE
 GROUP BY a.account, s."date"),
 --- Закупочная стоиомость от продаж ---
-cost_price_sales AS (SELECT
-	    SUM(fd.order_count * cp.purchase_price) AS cost_price_sales, -- 6 188 957
-	    fd.account
-	FROM funnel_daily fd
-	LEFT JOIN (
-	    SELECT DISTINCT ON (cp.local_vendor_code)
-	           cp.local_vendor_code,
-	           purchase_price,
-	           cp.date
-	    FROM cost_price cp
-	    WHERE cp.date = '{date}'
-	    ORDER BY cp.local_vendor_code, cp.date DESC
-	) cp
-	    ON cp.local_vendor_code = fd.wild
-	   AND cp."date" = fd."date"
-	WHERE fd."date" = '{date}'
-	GROUP BY fd.account),
+    cost_price_sales AS (	
+        SELECT
+            COUNT(s.price_with_disc) * AVG(cp.purchase_price) AS cost_price_sales, -- 5,645,221
+            a.account 
+        FROM sales s
+        LEFT JOIN article a 
+            ON a.nm_id = s.article_id 
+        LEFT JOIN (
+            SELECT DISTINCT ON (cp.local_vendor_code)
+                cp.local_vendor_code,
+                purchase_price,
+                cp.date
+            FROM cost_price cp
+            WHERE cp.date = '{date}'
+            ORDER BY cp.local_vendor_code, cp.date DESC
+    ) cp
+        ON cp.local_vendor_code = a.local_vendor_code
+    WHERE s."date" = '{date}'
+    AND s.is_realization IS TRUE
+    GROUP BY a.account),
 --- Подсчет прибыли по общим условиям от заказов ---
 general_cond AS (
 	SELECT SUM(anpd.sum_net_profit) AS general_profit_orders, -- -233,110
