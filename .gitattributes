@@ -1,0 +1,25 @@
+# Сохраняем LF для всех текстовых файлов
+* text=auto eol=lf
+
+# Особо важные форматы — всегда LF
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.txt text eol=lf
+*.py  text eol=lf
+*.md  text eol=lf
+
+# Jupyter Notebook — тоже LF
+*.ipynb text eol=lf
+
+# Windows-специфичные файлы — можно CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Бинарные файлы — не трогать
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.zip binary
+*.pyc binary
