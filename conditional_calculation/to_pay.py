@@ -4,7 +4,7 @@ from utils_gs import safe_open_spreadsheet, send_df_to_google
 def main():
 	# Устанавливаем соединение с базой данных
 	connection = create_connection()
-	days_count = 396  # Количество дней для расчета
+	days_count = 1  # Количество дней для расчета
 	# Создаем SQL-запрос для получения данных
 	query = f""" WITH fin_rep_to_pay AS(SELECT
                 f.date_from,
