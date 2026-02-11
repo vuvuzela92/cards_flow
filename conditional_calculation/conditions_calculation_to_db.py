@@ -75,13 +75,13 @@ for day in range(days_count+1):
                 WHEN asp.payment_type IN ('Бонусы', 'Кэшбэк') THEN asp.upd_sum
                 ELSE 0
             END) AS bonuses,
-        ast.account
+        asp.account
         FROM advert_spend asp
         LEFT JOIN advert_stat ast
         ON ast.campaign_id = asp.advert_id
         AND ast."date" = asp."date"
         WHERE asp.date = '{date}'
-        GROUP BY asp.date, ast.account),
+        GROUP BY asp.date, asp.account),
     -- Закупочная стоимость от заказов ---
     cost_price_orders AS(
         SELECT
