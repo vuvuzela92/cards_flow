@@ -1,6 +1,6 @@
 import requests
 import time
-from my_utils import load_api_tokens
+from my_utils import load_api_tokens, safe_open_spreadsheet, insert_multiple_columns
 import gspread
 
 
@@ -171,3 +171,32 @@ def prepare_insert_nds_to_unit(headers_loc: int, col_art_header: str, nds_dict_d
         nds_value = nds_dict_data.get(nm_id, "")  # если нет — пусто
         nds_values_list.append([nds_value])  # важно: каждый элемент — список из одного значения
     return nds_values_list
+
+def main():
+    """Функция обновляет данные по НДС в юнитке"""
+    # Определяем характеристику, которую будем извлекать из карточки товара
+    characteristic = 'Ставка НДС'
+    # Извлекаем данные по карточкам. Возвращается словарь артикул: НДС
+    nds_info = extract_characteristic(characteristic)
+
+    # Подготавливаем для перевода в гугл таблицу
+    headers_loc = 1
+    # Определяем колонку с артикулами
+    col_art_header = 'Артикул'
+    # Таблица, в которую будем импортировать данные
+    table = safe_open_spreadsheet('UNIT 2.0 (tested)')
+    # Лист в таблице, для вставки данных
+    sheet = table.worksheet('MAIN (tested)')
+    # Приводим данные к нужному формату для вставки (Список списков).
+    data_to_insert = prepare_insert_nds_to_unit(headers_loc, col_art_header, nds_info, sheet)
+
+    # Определяем заколовок таблицы для обновления
+    col_header = 'НДС'
+
+    # Определяем колонки для вставки данных, их нужно передавать списком
+    col_art_header_list = []
+    col_art_header_list.append(col_header)
+    # Номер строки, начиная с которой осуществляется вставка данных
+    data_loc = 2
+
+    insert_multiple_columns(sheet, headers_loc, col_art_header_list, data_loc, data_to_insert)

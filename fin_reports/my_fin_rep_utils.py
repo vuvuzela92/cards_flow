@@ -432,6 +432,11 @@ async def fetch_all_data(accounts_tokens, num_weeks=1):
             "cashback_amount": "NUMERIC(12,2)",
             "cashback_discount": "NUMERIC(12,2)",
             "account": "VARCHAR(50)",
+            "payment_schedule": 'NUMERIC(10,2)', 
+            "order_uid": "INTEGER", 
+            "kiz":"TEXT", 
+            "cashback_commission_change" : "INTEGER", 
+            "delivery_method": "TEXT"
             }
         key_columns = ['realizationreport_id', 'rrd_id', 'srid']
 

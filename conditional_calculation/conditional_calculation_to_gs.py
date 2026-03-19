@@ -10,7 +10,7 @@ data = []
 # Создание подключения к базе данных
 connection = create_connection()
 # Цикл по количеству дней для расчета
-days_count = 1  # Количество дней для расчета
+days_count = 18  # Количество дней для расчета
 for day in range(days_count):
     date = (datetime.now() - pd.Timedelta(days=day+1)).strftime('%Y-%m-%d')
     print(f"Выполняется запрос за дату: {date}")

@@ -23,7 +23,7 @@ def create_connection(db_name=os.getenv('NAME_2'), db_user=os.getenv('USER_2'), 
             host=db_host,
             port=db_port,
         )
-        print(f"Соединение с БД PostgreSQL успешно установлено в {datetime.now().strftime('%Y-%m-%d-%H:mm')}")
+        print(f"Соединение с БД PostgreSQL успешно установлено в {datetime.now().strftime('%Y-%m-%d-%H')}")
     except OperationalError as error:
         print(f"Произошла ошибка при подключении к БД PostgreSQL {error}")
     return connection
