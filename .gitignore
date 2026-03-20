@@ -10,3 +10,4 @@ creds.json
 tokens.json
 *.log
 .ipynb
+conditional_calculation/conditional_calculation_to_gs.ipynb
