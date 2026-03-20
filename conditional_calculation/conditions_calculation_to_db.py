@@ -1,4 +1,3 @@
-# %%
 from utils_sql import create_connection, get_db_table, create_insert_table_db_sync
 import pandas as pd
 from datetime import datetime
@@ -59,7 +58,3 @@ columns_type = {
 key_columns = ('account', 'date')  # как первичный ключ
 create_insert_table_db_sync(df, table_name, columns_type, key_columns)
 print(f"Данные добавлены в БД {table_name}")
-
-
-
-
