@@ -21,8 +21,8 @@ query = f"""
         SUM(o.adv_spend) AS adv_spend,
         SUM(o.bonuses) AS bonuses,
         ROUND(SUM(o.profit_by_cond_sales) - SUM(o.adv_spend)) AS profit_cond_sales_minus_adv_spend,
-        ROUND(SUM(o.orders_count) * AVG(o.purchase_price)) AS cost_price_orders,
-        ROUND(SUM(o.sales_count) * AVG(o.purchase_price)) AS cost_price_sales,
+        ROUND(SUM(o.orders_count * o.purchase_price)) AS cost_price_orders,
+        ROUND(SUM(o.sales_count * o.purchase_price)) AS cost_price_sales,
         SUM(o.profit_by_orders) AS general_profit_orders,
         o.date
         FROM orders_articles_analyze o
