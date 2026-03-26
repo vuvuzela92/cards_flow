@@ -10,7 +10,7 @@ connection = create_connection()
 
 query = f"""
 SELECT * FROM conditions_calculation cc
-WHERE cc.date >= '2026-01-01'
+WHERE cc.date >= '2025-12-01'
 ORDER BY cc.date ASC,
 	cc.account;
 """

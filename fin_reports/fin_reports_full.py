@@ -11,7 +11,7 @@ logging.basicConfig(
     handlers=[
         logging.FileHandler('fin_reports.log'),  # Логи будут записываться в файл fin_reports.log
         logging.StreamHandler()  # Логи также будут выводиться в консоль
-    ]
+    ], encoding='utf-8'
 )
 
 if __name__ == "__main__":

@@ -40,3 +40,447 @@
 2025-11-07 15:01:23,650 [INFO] Успешно сохранено 68086 строк в fin_reports_full
 2025-11-07 15:01:26,133 [INFO] Успешно сохранено 84835 строк в fin_reports_full
 2025-11-07 15:01:28,116 [INFO] Успешно сохранено 107007 строк в fin_reports_full
+2026-03-26 09:20:24,668 [ERROR] [401] Лопатина: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "1ab3c8a5e991911580e33618180a4778",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:23Z"
+}
+
+2026-03-26 09:20:24,702 [ERROR] [401] Оганесян: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "544664ba239365bcbd9e07b520be4761",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:23Z"
+}
+
+2026-03-26 09:20:24,717 [ERROR] [401] Пилосян: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "e723b8e229dab14df347d95ce31b4a1a",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:23Z"
+}
+
+2026-03-26 09:20:24,734 [ERROR] [401] Старт: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "813018edc2b82b81e055b731d1c3d5b8",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:23Z"
+}
+
+2026-03-26 09:20:24,748 [ERROR] [401] Хачатрян: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "c95c24f950903acd1b60b0b771535af5",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:23Z"
+}
+
+2026-03-26 09:20:24,766 [ERROR] [401] Тоноян: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "dea9588649d62a3eef24ee46d11945b4",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:23Z"
+}
+
+2026-03-26 09:20:24,831 [ERROR] [401] Старт2: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "ea47a0f6195598813a368eda001c1742",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:23Z"
+}
+
+2026-03-26 09:20:24,848 [ERROR] [401] Вектор: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "1f569cb295c7f5ca4c4fc72d2b421e50",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:23Z"
+}
+
+2026-03-26 09:20:24,866 [ERROR] [401] Даниелян: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "5543aa57de89515d363947cc5ebb0ff5",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:23Z"
+}
+
+2026-03-26 09:20:25,515 [ERROR] [401] Лопатина: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "56c4840540f3ddb78e28481106427069",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:24Z"
+}
+
+2026-03-26 09:20:25,533 [ERROR] [401] Старт2: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "f6b6afa9db9565ae17089dbcaf96edd8",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:24Z"
+}
+
+2026-03-26 09:20:25,548 [ERROR] [401] Вектор: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "ca5a671571bab807c934542c68b2e0bd",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:24Z"
+}
+
+2026-03-26 09:20:25,556 [ERROR] [401] Хачатрян: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "ab4537877a0e33b1662621c08a2ba763",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:24Z"
+}
+
+2026-03-26 09:20:25,563 [ERROR] [401] Старт: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "1fad15ba38dff7c682535f65fa1cf2c8",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:24Z"
+}
+
+2026-03-26 09:20:25,571 [ERROR] [401] Пилосян: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "1a5f5a8d3de37bc14318655652aec798",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:24Z"
+}
+
+2026-03-26 09:20:25,578 [ERROR] [401] Даниелян: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "31cda75fa2d26d4d0fe9f4f63adc3709",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:24Z"
+}
+
+2026-03-26 09:20:25,587 [ERROR] [401] Тоноян: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "eaf89c1883d9ff92ffa8d82b269c5035",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:24Z"
+}
+
+2026-03-26 09:20:25,596 [ERROR] [401] Оганесян: {
+    "title": "unauthorized",
+    "detail": "access token expired; Manage tokens at https://seller.wildberries.ru/supplier-settings/access-to-api",
+    "code": "167251cb759b cc73ad3617b9d5c82732 456760352e0e-60",
+    "requestId": "51617268beafba2484382e077ed87da9",
+    "origin": "s2s-api-auth-stat",
+    "status": 401,
+    "statusText": "Unauthorized",
+    "timestamp": "2026-03-26T06:20:24Z"
+}
+
+2026-03-26 11:26:25,494 [ERROR] [401] Старт2: {
+    "title": "unau
+2026-03-26 11:26:25,534 [ERROR] [401] Даниелян: {
+    "title": "unau
+2026-03-26 11:26:25,543 [ERROR] [401] Оганесян: {
+    "title": "unau
+2026-03-26 11:26:25,551 [ERROR] [401] Пилосян: {
+    "title": "unau
+2026-03-26 11:26:25,558 [ERROR] [401] Тоноян: {
+    "title": "unau
+2026-03-26 11:26:25,568 [ERROR] [401] Хачатрян: {
+    "title": "unau
+2026-03-26 11:26:25,575 [ERROR] [401] Лопатина: {
+    "title": "unau
+2026-03-26 11:26:25,587 [ERROR] [401] Вектор: {
+    "title": "unau
+2026-03-26 11:26:25,595 [ERROR] [401] Старт: {
+    "title": "unau
+2026-03-26 11:26:26,744 [ERROR] [401] Даниелян: {
+    "title": "unau
+2026-03-26 11:26:26,800 [ERROR] [401] Оганесян: {
+    "title": "unau
+2026-03-26 11:26:26,842 [ERROR] [401] Старт2: {
+    "title": "unau
+2026-03-26 11:26:26,849 [ERROR] [401] Вектор: {
+    "title": "unau
+2026-03-26 11:26:26,857 [ERROR] [401] Пилосян: {
+    "title": "unau
+2026-03-26 11:26:26,863 [ERROR] [401] Старт: {
+    "title": "unau
+2026-03-26 11:26:26,872 [ERROR] [401] Лопатина: {
+    "title": "unau
+2026-03-26 11:26:26,879 [ERROR] [401] Тоноян: {
+    "title": "unau
+2026-03-26 11:26:27,002 [ERROR] [401] Хачатрян: {
+    "title": "unau
+2026-03-26 11:31:16,001 [ERROR] [204] ВЕКТОР3745: 
+2026-03-26 11:31:46,440 [WARNING] [Лопатина] Ждём 60.0 сек до следующего запроса
+2026-03-26 11:32:51,389 [WARNING] [Даниелян] Ждём 70.0 сек до следующего запроса
+2026-03-26 11:32:54,389 [ERROR] [204] Лопатина: 
+2026-03-26 11:34:01,414 [WARNING] [ВЕКТОР7794] Ждём 60.0 сек до следующего запроса
+2026-03-26 11:34:02,078 [ERROR] [204] Даниелян: 
+2026-03-26 11:35:01,383 [WARNING] [СТАРТ8748] Ждём 10.0 сек до следующего запроса
+2026-03-26 11:35:11,380 [WARNING] [Тоноян] Ждём 0.0 сек до следующего запроса
+2026-03-26 11:35:11,403 [WARNING] [Вектор2] Ждём 0.0 сек до следующего запроса
+2026-03-26 11:35:11,405 [WARNING] [ВЕКТОР3522] Ждём 60.0 сек до следующего запроса
+2026-03-26 11:35:12,385 [ERROR] [204] ВЕКТОР7794: 
+2026-03-26 11:35:20,510 [ERROR] [204] СТАРТ8748: 
+2026-03-26 11:35:22,565 [ERROR] [204] Тоноян: 
+2026-03-26 11:35:24,577 [ERROR] [204] Вектор2: 
+2026-03-26 11:35:26,789 [ERROR] [204] Оганесян: 
+2026-03-26 11:36:11,407 [WARNING] [Хачатрян] Ждём 60.0 сек до следующего запроса
+2026-03-26 11:36:11,763 [ERROR] [204] ВЕКТОР3522: 
+2026-03-26 11:37:11,410 [WARNING] [Вектор] Ждём 10.0 сек до следующего запроса
+2026-03-26 11:37:11,543 [ERROR] [204] Хачатрян: 
+2026-03-26 11:37:13,174 [ERROR] [204] СТАРТ9237: 
+2026-03-26 11:37:14,306 [ERROR] [204] ВЕКТОР4216: 
+2026-03-26 11:37:21,429 [WARNING] [СТАРТ4040] Ждём 70.0 сек до следующего запроса
+2026-03-26 11:37:21,522 [ERROR] [204] Старт2: 
+2026-03-26 11:38:31,437 [WARNING] [Вектор] Ждём 60.0 сек до следующего запроса
+2026-03-26 11:38:31,526 [ERROR] [204] СТАРТ4040: 
+2026-03-26 11:39:31,439 [WARNING] [Пилосян] Ждём 10.0 сек до следующего запроса
+2026-03-26 11:39:31,658 [ERROR] [204] Вектор: 
+2026-03-26 11:39:41,440 [WARNING] [Старт] Ждём 60.0 сек до следующего запроса
+2026-03-26 11:40:41,450 [WARNING] [Пилосян] Ждём 60.0 сек до следующего запроса
+2026-03-26 11:40:41,587 [ERROR] [204] Старт: 
+2026-03-26 11:41:41,558 [ERROR] [204] Пилосян: 
+2026-03-26 11:41:46,537 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:46,539 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:46,540 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:46,541 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:46,542 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:46,543 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:46,543 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:46,544 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:46,544 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:46,631 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:48,838 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:48,877 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:48,878 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:48,879 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:48,881 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:48,885 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '121760339_8739560387859878965' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:41:52,435 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:41:52,438 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '8833450_13416725121038422' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:41:55,087 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '9881060_5026719849169852446' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:02,324 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '13966693_15983346621592237' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:05,608 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '85285802_8837495832147478800' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:12,074 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '96889740_5016414022434426280' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:15,699 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '153619050_6843055796785003218' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:19,120 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: 'rdf215d33c8c541fb845b06b75b3c4f37' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:21,024 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '99115350_8897868326940906923' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:22,353 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '56155323_7350995458168746652' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:27,244 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '123397002_70698501121175689' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:27,631 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '31045066_24522533121194867' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:35,613 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '18852117_5151590546290472687' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:37,433 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '92187819_6929492941803225638' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:40,378 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '50784069_8058866219646672074' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:42,915 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '186582051_5396137243611601749' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:42:43,559 [ERROR] [204] ВЕКТОР3745: 
+2026-03-26 11:42:58,381 [WARNING] [Лопатина] Ждём 60.0 сек до следующего запроса
+2026-03-26 11:43:59,085 [WARNING] [СТАРТ9237] Ждём 60.0 сек до следующего запроса
+2026-03-26 11:43:59,333 [ERROR] [204] Лопатина: 
+2026-03-26 11:44:59,068 [WARNING] [Хачатрян] Ждём 10.0 сек до следующего запроса
+2026-03-26 11:44:59,316 [ERROR] [204] СТАРТ9237: 
+2026-03-26 11:45:09,282 [ERROR] [204] Даниелян: 
+2026-03-26 11:45:11,899 [ERROR] [204] ВЕКТОР3522: 
+2026-03-26 11:45:12,919 [ERROR] [204] Оганесян: 
+2026-03-26 11:45:15,354 [ERROR] [204] Вектор2: 
+2026-03-26 11:45:19,284 [ERROR] [204] СТАРТ4040: 
+2026-03-26 11:45:21,769 [ERROR] [204] ВЕКТОР4216: 
+2026-03-26 11:45:23,877 [ERROR] [204] Тоноян: 
+2026-03-26 11:45:26,189 [ERROR] [204] Хачатрян: 
+2026-03-26 11:45:28,163 [ERROR] [204] СТАРТ8748: 
+2026-03-26 11:45:30,378 [ERROR] [204] ВЕКТОР7794: 
+2026-03-26 11:45:56,159 [WARNING] [Старт2] Ждём 60.0 сек до следующего запроса
+2026-03-26 11:46:56,162 [WARNING] [Пилосян] Ждём 60.0 сек до следующего запроса
+2026-03-26 11:46:56,260 [ERROR] [204] Старт2: 
+2026-03-26 11:47:56,173 [WARNING] [Вектор] Ждём 70.0 сек до следующего запроса
+2026-03-26 11:47:56,298 [ERROR] [204] Пилосян: 
+2026-03-26 11:48:00,830 [ERROR] [204] Старт: 
+2026-03-26 11:49:06,328 [ERROR] [204] Вектор: 
+2026-03-26 11:49:15,447 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:15,449 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:15,449 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:15,450 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:15,451 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:15,451 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:15,452 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:15,602 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:15,603 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:15,604 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:15,605 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:20,296 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:20,298 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:20,384 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:20,390 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '107065427_62532713621181235' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:49:24,442 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:24,443 [WARNING] Лишние колонки в DataFrame: {'seller_promo_discount', 'loyalty_id', 'sale_price_promocode_discount_prc', 'loyalty_discount', 'seller_promo_id', 'uuid_promocode'}, они будут проигнорированы
+2026-03-26 11:49:24,445 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '53192178_8689116502222765725' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:49:28,017 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '55605338_5512043837335705103' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:49:31,419 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '208717197_7881475129521444275' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:49:37,244 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '132297461_8666478912560828129' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:49:40,008 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '19492349_5095779918930800846' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:49:40,750 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '213351821_7412636949978230659' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:49:48,205 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '100963346_4918052143923808788' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:49:50,634 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '187619099_102809549621116482' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:49:53,882 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '90930733_54465366620986493' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:49:57,316 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '101938245_8330598041683791107' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:50:06,279 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '8e62541b5ae540f289a8460e89c9c089' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:50:09,848 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '128866875_8243049477184687818' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:50:12,274 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '88764731_5983270788596941152' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:50:13,160 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '46475856_5284982071817209987' ('str' object cannot be interpreted as an integer)
+2026-03-26 11:50:20,444 [ERROR] Ошибка при работе с БД: invalid input for query argument $79 in element #0 of executemany() sequence: '19292611_9010276322214498848' ('str' object cannot be interpreted as an integer)
+2026-03-26 12:09:24,077 [WARNING] [Лопатина] Ждём 60.0 сек до следующего запроса
+2026-03-26 12:11:39,076 [WARNING] [СТАРТ9237] Ждём 60.0 сек до следующего запроса
+2026-03-26 12:12:39,082 [WARNING] [ВЕКТОР4216] Ждём 60.0 сек до следующего запроса
+2026-03-26 12:13:39,096 [WARNING] [СТАРТ8748] Ждём 10.0 сек до следующего запроса
+2026-03-26 12:13:49,078 [WARNING] [Пилосян] Ждём 0.0 сек до следующего запроса
+2026-03-26 12:13:49,081 [WARNING] [СТАРТ4040] Ждём 70.0 сек до следующего запроса
+2026-03-26 12:14:59,069 [WARNING] [Вектор2] Ждём 0.0 сек до следующего запроса
+2026-03-26 12:14:59,072 [WARNING] [Тоноян] Ждём 0.0 сек до следующего запроса
+2026-03-26 12:14:59,075 [WARNING] [Пилосян] Ждём 60.0 сек до следующего запроса
+2026-03-26 12:15:59,087 [WARNING] [Даниелян] Ждём 10.0 сек до следующего запроса
+2026-03-26 12:16:09,083 [WARNING] [Вектор] Ждём 70.0 сек до следующего запроса
+2026-03-26 12:17:32,895 [WARNING] [Старт] Ждём 60.0 сек до следующего запроса
+2026-03-26 12:18:32,921 [WARNING] [Вектор] Ждём 60.0 сек до следующего запроса
+2026-03-26 12:19:40,294 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,295 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,296 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,296 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,297 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,297 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,298 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,298 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,299 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,300 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,301 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,302 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,303 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,342 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,343 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:19:40,381 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:20:36,537 [INFO] Успешно сохранено 3153 строк в fin_reports_full
+2026-03-26 12:21:11,129 [INFO] Успешно сохранено 16660 строк в fin_reports_full
+2026-03-26 12:21:19,404 [INFO] Успешно сохранено 27799 строк в fin_reports_full
+2026-03-26 12:21:21,575 [INFO] Успешно сохранено 18764 строк в fin_reports_full
+2026-03-26 12:21:22,633 [INFO] Успешно сохранено 9050 строк в fin_reports_full
+2026-03-26 12:21:33,906 [INFO] Успешно сохранено 30115 строк в fin_reports_full
+2026-03-26 12:21:35,143 [INFO] Успешно сохранено 24249 строк в fin_reports_full
+2026-03-26 12:21:36,236 [INFO] Успешно сохранено 17156 строк в fin_reports_full
+2026-03-26 12:21:41,491 [INFO] Успешно сохранено 23877 строк в fin_reports_full
+2026-03-26 12:21:58,037 [INFO] Успешно сохранено 31508 строк в fin_reports_full
+2026-03-26 12:22:07,486 [INFO] Успешно сохранено 29345 строк в fin_reports_full
+2026-03-26 12:22:08,206 [INFO] Успешно сохранено 33115 строк в fin_reports_full
+2026-03-26 12:22:19,628 [INFO] Успешно сохранено 42942 строк в fin_reports_full
+2026-03-26 12:22:33,286 [INFO] Успешно сохранено 64936 строк в fin_reports_full
+2026-03-26 12:22:34,161 [INFO] Успешно сохранено 73326 строк в fin_reports_full
+2026-03-26 12:22:41,093 [INFO] Успешно сохранено 58158 строк в fin_reports_full
+2026-03-26 12:23:23,946 [WARNING] [Лопатина] Ждём 60.0 сек до следующего запроса
+2026-03-26 12:24:23,941 [WARNING] [ВЕКТОР3522] Ждём 60.0 сек до следующего запроса
+2026-03-26 12:25:23,962 [WARNING] [Оганесян] Ждём 60.0 сек до следующего запроса
+2026-03-26 12:26:58,311 [WARNING] [СТАРТ8748] Ждём 70.0 сек до следующего запроса
+2026-03-26 12:28:08,339 [WARNING] [Тоноян] Ждём 70.0 сек до следующего запроса
+2026-03-26 12:29:18,304 [WARNING] [ВЕКТОР7794] Ждём 0.0 сек до следующего запроса
+2026-03-26 12:29:18,323 [WARNING] [Пилосян] Ждём 0.0 сек до следующего запроса
+2026-03-26 12:29:18,334 [WARNING] [ВЕКТОР4216] Ждём 70.0 сек до следующего запроса
+2026-03-26 12:30:28,354 [WARNING] [Хачатрян] Ждём 70.0 сек до следующего запроса
+2026-03-26 12:31:38,347 [WARNING] [Даниелян] Ждём 0.0 сек до следующего запроса
+2026-03-26 12:31:38,352 [WARNING] [Старт] Ждём 60.0 сек до следующего запроса
+2026-03-26 12:32:38,355 [WARNING] [Старт2] Ждём 10.0 сек до следующего запроса
+2026-03-26 12:32:48,360 [WARNING] [Вектор] Ждём 70.0 сек до следующего запроса
+2026-03-26 12:33:58,367 [WARNING] [Старт2] Ждём 60.0 сек до следующего запроса
+2026-03-26 12:34:58,370 [WARNING] [Вектор] Ждём 70.0 сек до следующего запроса
+2026-03-26 12:36:18,347 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,349 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,349 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,350 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,350 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,351 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,351 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,352 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,352 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,353 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,353 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,354 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,354 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,366 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,405 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:36:18,445 [WARNING] Лишние колонки в DataFrame: {'sale_price_promocode_discount_prc', 'seller_promo_discount', 'uuid_promocode', 'seller_promo_id', 'loyalty_discount', 'loyalty_id'}, они будут проигнорированы
+2026-03-26 12:37:59,812 [INFO] Успешно сохранено 30201 строк в fin_reports_full
+2026-03-26 12:38:11,796 [INFO] Успешно сохранено 6911 строк в fin_reports_full
+2026-03-26 12:38:11,917 [INFO] Успешно сохранено 7410 строк в fin_reports_full
+2026-03-26 12:38:42,381 [INFO] Успешно сохранено 20943 строк в fin_reports_full
+2026-03-26 12:38:50,647 [INFO] Успешно сохранено 25589 строк в fin_reports_full
+2026-03-26 12:38:54,004 [INFO] Успешно сохранено 22853 строк в fin_reports_full
+2026-03-26 12:38:55,901 [INFO] Успешно сохранено 30057 строк в fin_reports_full
+2026-03-26 12:38:58,034 [INFO] Успешно сохранено 40077 строк в fin_reports_full
+2026-03-26 12:38:59,287 [INFO] Успешно сохранено 28499 строк в fin_reports_full
+2026-03-26 12:39:00,176 [INFO] Успешно сохранено 67424 строк в fin_reports_full
+2026-03-26 12:39:00,704 [INFO] Успешно сохранено 30915 строк в fin_reports_full
+2026-03-26 12:39:06,913 [INFO] Успешно сохранено 30089 строк в fin_reports_full
+2026-03-26 12:39:10,408 [INFO] Успешно сохранено 33912 строк в fin_reports_full
+2026-03-26 12:39:16,958 [INFO] Успешно сохранено 83181 строк в fin_reports_full
+2026-03-26 12:39:18,573 [INFO] Успешно сохранено 52587 строк в fin_reports_full
+2026-03-26 12:39:21,568 [INFO] Успешно сохранено 67311 строк в fin_reports_full

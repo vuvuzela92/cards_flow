@@ -31,7 +31,7 @@ async def get_fin_reports_async(account: str, api_token: str, date_from: str, da
     """Получаем финансовые отчёты с правильной пагинацией и retry."""
     # Глобальный словарь: когда можно следующий запрос по аккаунту
 
-    async with asyncio.Semaphore(8) as semaphore:
+    async with asyncio.Semaphore(17) as semaphore:
         print(f"🔍 {account} | Запрос за {date_from} – {date_to}")
 
     url = "https://statistics-api.wildberries.ru/api/v5/supplier/reportDetailByPeriod"
@@ -98,11 +98,16 @@ async def get_fin_reports_async(account: str, api_token: str, date_from: str, da
                         await asyncio.sleep(2 * attempt)
                         continue
 
+                    if response.status == 204:
+                        logging.info(f"🟢 {account}: Нет данных за этот период (API вернул 204)")
+                        break                    
+
                     # Остальные статусы
                     if response.status != 200:
                         text = await response.text()
-                        logging.error(f"[{response.status}] {account}: {text[:500]}")
+                        logging.error(f"[{response.status}] {account}: {text[:20]}")
                         break
+
 
                     raw_text = await response.text()
                     if not raw_text.strip():
@@ -433,7 +438,7 @@ async def fetch_all_data(accounts_tokens, num_weeks=1):
             "cashback_discount": "NUMERIC(12,2)",
             "account": "VARCHAR(50)",
             "payment_schedule": 'NUMERIC(10,2)', 
-            "order_uid": "INTEGER", 
+            "order_uid": "TEXT",
             "kiz":"TEXT", 
             "cashback_commission_change" : "INTEGER", 
             "delivery_method": "TEXT"
